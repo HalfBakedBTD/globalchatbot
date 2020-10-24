@@ -97,7 +97,7 @@ bot.on("message", async message => {
           .then(invite => {
             let ownEmbed = new Discord.RichEmbed()
    	        .setColor('#f80707')
-            .setFooter(`Code: ${invite.code}`)
+            .setFooter(`Invite Code: ${invite.code}`)
    	        .setDescription(`**[Owner]** <@${message.author.id}>: ${message.content}`);
             channel.send(ownEmbed);
             message.delete().catch(O_o=>{});
@@ -107,7 +107,7 @@ bot.on("message", async message => {
           .then(invite => {
             let ownEmbed = new Discord.RichEmbed()
    	        .setColor('#27ae60')
-            .setFooter(`Code: ${invite.code}`)
+            .setFooter(`Invite Code: ${invite.code}`)
    	        .setDescription(`**[Member]** <@${message.author.id}>: ${message.content}`);
             channel.send(ownEmbed);
             message.delete().catch(O_o=>{});
