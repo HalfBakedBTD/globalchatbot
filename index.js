@@ -84,7 +84,7 @@ bot.on("message", async message => {
   
   bot.channels.filter(c => c.name === 'global-chat').forEach(channel => {
     if (channel.type == 'text') {
-      channel.send(`<@${message.author.id}> - ${message.content}`);
+      channel.send(`<@${message.author.id}> - ${message.createdAt}\n${message.content}`);
       return message.delete().catch(O_o=>{});
     }
   });
