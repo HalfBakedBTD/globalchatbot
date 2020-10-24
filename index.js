@@ -88,8 +88,7 @@ bot.on("message", async message => {
       if (channel.type == 'text') {
         let adEmbed = new Discord.RichEmbed()
    	    .setColor('#27ae60')
-   	    .setTitle(`${message.author.username}`)
-        .setFooter(`${message.createdAt}`)
+   	    .setTitle(`${message.author.username} [ID: ${message.author.id}]`)
    	    .setDescription(`${message.content}`);
         channel.send(adEmbed);
         message.delete().catch(O_o=>{});
