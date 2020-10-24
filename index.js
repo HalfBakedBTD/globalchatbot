@@ -70,7 +70,7 @@ bot.on("message", async message => {
     return message.author.send("Invite me to your discord:\n:link: https://discord.com/oauth2/authorize?client_id=769389557304918016&permissions=67496128&scope=bot :link:");
   }
   if (message.content === '?info') {
-    return message.channel.send(`**GlobalChat:**\n\tRunning on: ${bot.guilds.size} servers.\n\n\tWatching: ${bot.users.size} online users.`);
+    return message.channel.send(`**GlobalChat:**\n\tRunning on ${bot.guilds.size} servers.\n\tWatching ${bot.users.size} online users.`);
   }
   if(message.channel.name !== "global-chat") return;
   for (i = 0; i < badWords.length; i++) {
