@@ -62,7 +62,17 @@ bot.on("ready", async () => {
 bot.on("message", async message => {
   if(message.author.bot) return;
   if(message.channel.type === "dm") return;
-
+  if (message.content === '?help') {
+    return message.channel.send("**My Commands:**\nTo use GlobalChat, make a channel named `#global-chat` and start chatting!\n\t?help - shows this message.\n\t?invite - invite me to your server!\n\t?info - Gives you some of my stats.")
+  }
+  if (message.content === '?invite') {
+    message.channel.send("I have direct messaged you my invite link!");
+    return message.author.send("Invite me to your discord:\n:link: https://discord.com/oauth2/authorize?client_id=769389557304918016&permissions=67496128&scope=bot :link:");
+  }
+  if (message.content === '?info') {
+    return message.channel.send(`**GlobalChat:**\n\tRunning on: ${bot.guilds.size} servers.\n\n\tWatching: ${bot.users.size} online users.`);
+  }
+  if(message.channel.name !== "global-chat") return;
   for (i = 0; i < badWords.length; i++) {
       var rgx = new RegExp(badWords[i], 'gi');
       if (rgx.test(message.content)) {
@@ -71,6 +81,12 @@ bot.on("message", async message => {
           return;
       }
   }
+     
+  bot.channels.filter(c => c.name === 'global-chat').forEach(channel => {
+    if (channel.type == 'text') {
+      channel.send(`<@${message.author.id}>:\n${message.content}`);
+    }
+  });
 
   let prefix = "?";
   let messageArray = message.content.split(" ");
