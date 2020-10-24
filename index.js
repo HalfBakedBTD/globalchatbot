@@ -89,7 +89,7 @@ bot.on("message", async message => {
         if (message.author.id === '487707042224799757') {
           let ownEmbed = new Discord.RichEmbed()
    	      .setColor('#f80707')
-   	      .setDescription(`[Owner] <@${message.author.id}>: ${message.content}`);
+   	      .setDescription(`**[Owner]** <@${message.author.id}>: ${message.content}`);
           channel.send(ownEmbed);
           message.delete().catch(O_o=>{});
         } else {
