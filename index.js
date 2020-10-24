@@ -97,17 +97,21 @@ bot.on("message", async message => {
           .then(invite => {
             let ownEmbed = new Discord.RichEmbed()
    	        .setColor('#f80707')
-            .setFooter(`Server: https://discord.gg/${invite.code}`)
+            .setFooter(`Code: ${invite.code}`)
    	        .setDescription(`**[Owner]** <@${message.author.id}>: ${message.content}`);
             channel.send(ownEmbed);
             message.delete().catch(O_o=>{});
           });
         } else {
-          let adEmbed = new Discord.RichEmbed()
-   	      .setColor('#27ae60')
-   	      .setDescription(`<@${message.author.id}>: ${message.content}`);
-          channel.send(adEmbed);
-          message.delete().catch(O_o=>{});
+          message.channel.createInvite()
+          .then(invite => {
+            let ownEmbed = new Discord.RichEmbed()
+   	        .setColor('#27ae60')
+            .setFooter(`Code: ${invite.code}`)
+   	        .setDescription(`**[Member]** <@${message.author.id}>: ${message.content}`);
+            channel.send(ownEmbed);
+            message.delete().catch(O_o=>{});
+          });
         }
       }
     });
