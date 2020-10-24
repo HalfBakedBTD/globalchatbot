@@ -96,7 +96,7 @@ bot.on("message", async message => {
           async function replyWithInvite(message) {
             let invite = await message.channel.createInvite(
               {
-                 maxAge: 60 * 60 * 1000, // maximum time for the invite, in milliseconds
+                 maxAge: 86400, // maximum time for the invite, in milliseconds
                 maxUses: 100 // maximum times it can be used
               },
             )
