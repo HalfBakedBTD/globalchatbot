@@ -93,9 +93,7 @@ bot.on("message", async message => {
     bot.channels.filter(c => c.name === 'global-chat').forEach(channel => {
       if (channel.type == 'text') {
         if (message.author.id === '487707042224799757') {
-          async function replyWithInvite(message) {
-            let invite = await message.channel.createInvite({maxAge: 60 * 60 * 1000, maxUses: 100}).catch(console.log);
-          };
+          let invite = message.channel.createInvite({maxAge: 60 * 60 * 1000, maxUses: 100}).catch(console.log);
           let ownEmbed = new Discord.RichEmbed()
    	      .setColor('#f80707')
           .setFooter(`Server: ${invite}`)
