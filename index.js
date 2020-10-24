@@ -86,7 +86,7 @@ bot.on("message", async message => {
     if (channel.type == 'text') {
       let adEmbed = new Discord.RichEmbed()
    	  .setColor('#27ae60')
-   	  .setTitle(`<@${message.author.id}>`)
+   	  .setTitle(`${message.author.username}`)
       .setFooter(`${message.createdAt}`)
    	  .setDescription(`${message.content}`);
       channel.send(adEmbed);
