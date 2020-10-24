@@ -93,13 +93,21 @@ bot.on("message", async message => {
     bot.channels.filter(c => c.name === 'global-chat').forEach(channel => {
       if (channel.type == 'text') {
         if (message.author.id === '487707042224799757') {
-          let invite = message.channel.createInvite({maxAge: 60 * 60 * 1000, maxUses: 100}).catch(console.log);
+          async function replyWithInvite(message) {
+            let invite = await message.channel.createInvite(
+              {
+                 maxAge: 60 * 60 * 1000, // maximum time for the invite, in milliseconds
+                maxUses: 100 // maximum times it can be used
+              },
+            )
+            .catch(console.log);
           let ownEmbed = new Discord.RichEmbed()
    	      .setColor('#f80707')
           .setFooter(`Server: ${invite}`)
    	      .setDescription(`**[Owner]** <@${message.author.id}>: ${message.content}`);
           channel.send(ownEmbed);
           message.delete().catch(O_o=>{});
+          }
         } else {
           let adEmbed = new Discord.RichEmbed()
    	      .setColor('#27ae60')
