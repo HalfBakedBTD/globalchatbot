@@ -1,6 +1,8 @@
 const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
+const claim_cooldown_time = 10;
+const claim_talked_users = new Set();
 bot.commands = new Discord.Collection();
 const badWords = [
     'nigga',
@@ -81,18 +83,23 @@ bot.on("message", async message => {
           return;
       }
   }
-  
-  bot.channels.filter(c => c.name === 'global-chat').forEach(channel => {
-    if (channel.type == 'text') {
-      let adEmbed = new Discord.RichEmbed()
-   	  .setColor('#27ae60')
-   	  .setTitle(`${message.author.username}`)
-      .setFooter(`${message.createdAt}`)
-   	  .setDescription(`${message.content}`);
-      channel.send(adEmbed);
-      return message.delete().catch(O_o=>{});
-    }
-  });
+  if (claim_talked_users.has(message.author.id)) return message.reply("you have to wait 10 seconds between chats to stop spam.");
+    bot.channels.filter(c => c.name === 'global-chat').forEach(channel => {
+      if (channel.type == 'text') {
+        let adEmbed = new Discord.RichEmbed()
+   	    .setColor('#27ae60')
+   	    .setTitle(`${message.author.username}`)
+        .setFooter(`${message.createdAt}`)
+   	    .setDescription(`${message.content}`);
+        channel.send(adEmbed);
+        message.delete().catch(O_o=>{});
+      }
+    });
+  claim_talked_users.add(message.author.id);
+    setTimeout(() => {
+      claim_talked_users.delete(message.author.id);
+    }, claim_cooldown_time * 6000);
+  }
 
   let prefix = "?";
   let messageArray = message.content.split(" ");
