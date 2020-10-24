@@ -79,11 +79,11 @@ bot.on("message", async message => {
       var rgx = new RegExp(badWords[i], 'gi');
       if (rgx.test(message.content)) {
           message.delete().catch(O_o=>{});
-          message.channel.send("Message deleted to keep things family friendly for all servers! (Links are potentially harmful and are also removed.)").then(msg => msg.delete(2000));
+          message.channel.send("Message deleted to keep things family friendly for all servers! (Links are potentially harmful and are also removed.)").then(msg => msg.delete(5000));
           return;
       }
   }
-  if (claim_talked_users.has(message.author.id)) return message.reply("you have to wait 10 seconds between chats to stop spam.");
+  if (claim_talked_users.has(message.author.id)) return message.reply("you have to wait 10 seconds between chats to stop spam.").then(msg => msg.delete(6000));
     bot.channels.filter(c => c.name === 'global-chat').forEach(channel => {
       if (channel.type == 'text') {
         let adEmbed = new Discord.RichEmbed()
