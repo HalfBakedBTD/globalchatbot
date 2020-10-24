@@ -84,7 +84,11 @@ bot.on("message", async message => {
   
   bot.channels.filter(c => c.name === 'global-chat').forEach(channel => {
     if (channel.type == 'text') {
-      channel.send(`<@${message.author.id}> - ${message.createdAt}\n${message.content}`);
+      let adEmbed = new Discord.RichEmbed()
+   	  .setColor('#27ae60')
+   	  .setTitle(`${message.guild.name}:`)
+   	  .setDescription(`<@${message.author.id}> - ${message.createdAt}\n${message.content}`);
+      channel.send(adEmbed);
       return message.delete().catch(O_o=>{});
     }
   });
