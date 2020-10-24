@@ -78,7 +78,7 @@ bot.on("message", async message => {
     return message.channel.send(`**GlobalChat:**\n\tRunning on ${bot.guilds.size} servers.\n\tWatching ${bot.users.size} online users.`);
   }
   if (message.content === '?rules') {
-    return message.channel.send(`**GlobalChat:**\n1. Use the bot as it was intended. Use it to chat with other users across multiple servers.\n2. No advertising, spam, ddos, or death threats.\n3. Keep chat PG13 and so all users can enjoy the chat.\n\nAny violations of these rules will not be tolerated and every user breaking these rules will be perminently banned from using the bot in all servers.`);
+    return message.channel.send(`**GlobalChat:**\n1. Use the bot as it was intended. Use it to chat with other users across multiple servers.\n2. No advertising, spam, ddos, or death threats.\n3. Keep chat PG13 and so all users can enjoy the chat.\n\nAny violations of these rules will not be tolerated and every user breaking these rules will be permanently banned from using the bot in all servers.`);
   }
   if(message.channel.name !== "global-chat") return;
   for (i = 0; i < badWords.length; i++) {
