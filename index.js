@@ -98,7 +98,7 @@ bot.on("message", async message => {
   claim_talked_users.add(message.author.id);
     setTimeout(() => {
       claim_talked_users.delete(message.author.id);
-    }, claim_cooldown_time * 6000);
+    }, claim_cooldown_time * 600);
 
   let prefix = "?";
   let messageArray = message.content.split(" ");
