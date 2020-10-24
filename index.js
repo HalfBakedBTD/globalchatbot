@@ -33,6 +33,7 @@ const badWords = [
     'af',
     'https',
     '.com',
+    '.gg'
 ];
 
 fs.readdir("./commands/", (err, files) => {
