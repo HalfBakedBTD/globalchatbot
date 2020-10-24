@@ -86,11 +86,19 @@ bot.on("message", async message => {
   if (claim_talked_users.has(message.author.id)) return message.reply("you have to wait 10 seconds between chats to stop spam.").then(msg => msg.delete(6000));
     bot.channels.filter(c => c.name === 'global-chat').forEach(channel => {
       if (channel.type == 'text') {
-        let adEmbed = new Discord.RichEmbed()
-   	    .setColor('#27ae60')
-   	    .setDescription(`<@${message.author.id}>: ${message.content}`);
-        channel.send(adEmbed);
-        message.delete().catch(O_o=>{});
+        if (message.author.id === '487707042224799757') {
+          let ownEmbed = new Discord.RichEmbed()
+   	      .setColor('#f80707')
+   	      .setDescription(`[Owner] <@${message.author.id}>: ${message.content}`);
+          channel.send(ownEmbed);
+          message.delete().catch(O_o=>{});
+        } else {
+          let adEmbed = new Discord.RichEmbed()
+   	      .setColor('#27ae60')
+   	      .setDescription(`<@${message.author.id}>: ${message.content}`);
+          channel.send(adEmbed);
+          message.delete().catch(O_o=>{});
+        }
       }
     });
   claim_talked_users.add(message.author.id);
