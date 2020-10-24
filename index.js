@@ -99,7 +99,7 @@ bot.on("message", async message => {
     setTimeout(() => {
       claim_talked_users.delete(message.author.id);
     }, claim_cooldown_time * 6000);
-  }
+  });
 
   let prefix = "?";
   let messageArray = message.content.split(" ");
