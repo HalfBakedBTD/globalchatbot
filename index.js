@@ -35,7 +35,10 @@ const badWords = [
     'af',
     'https',
     '.com',
-    '.gg'
+    '.gg',
+    'kys',
+    'die',
+    'kill'
 ];
 
 fs.readdir("./commands/", (err, files) => {
@@ -65,7 +68,7 @@ bot.on("message", async message => {
   if(message.author.bot) return;
   if(message.channel.type === "dm") return;
   if (message.content === '?help') {
-    return message.channel.send("**My Commands:**\nTo use GlobalChat, make a channel named `#global-chat` and start chatting!\n\t?help - shows this message.\n\t?invite - invite me to your server!\n\t?info - Gives you some of my stats.")
+    return message.channel.send("**My Commands:**\nTo use GlobalChat, make a channel named `#global-chat` and start chatting!\n\t?help - shows this message.\n\t?invite - invite me to your server!\n\t?info - Gives you some of my stats.\n\t?rules - Gives you a list of chatting rules you must follow.")
   }
   if (message.content === '?invite') {
     message.channel.send("I have direct messaged you my invite link!");
@@ -73,6 +76,9 @@ bot.on("message", async message => {
   }
   if (message.content === '?info') {
     return message.channel.send(`**GlobalChat:**\n\tRunning on ${bot.guilds.size} servers.\n\tWatching ${bot.users.size} online users.`);
+  }
+  if (message.content === '?rules') {
+    return message.channel.send(`**GlobalChat:**\n1. Use the bot as it was intended. Use it to chat with other users across multiple servers.\n2. No advertising, spam, ddos, or death threats.\n3. Keep chat PG13 and so all users can enjoy the chat.\n\nAny violations of these rules will not be tolerated and every user breaking these rules will be perminently banned from using the bot in all servers.`);
   }
   if(message.channel.name !== "global-chat") return;
   for (i = 0; i < badWords.length; i++) {
